@@ -2,10 +2,18 @@ using System;
 using UnityEditor;
 using UnityEngine;
 
-public class SearchBar 
+public class SearchBar : EditorWindow
 {
+    /// <summary>
+    /// Opens up Window
+    /// </summary>
+    [MenuItem("Snorlax's Tools/Search Bar")]
+    public  static void OpenWindow()
+    {
+        GetWindow<SearchBar>();
+    }
     // Targeted array or list that will be filtered out
-    string[] listOfStrings;
+    string[] listOfStrings = { "Apples", "Peaches", "Grapes", "Watermelon"};
     // String for the searh bar, must initalise or the editor might misbehave
     string SearchString = "";
     #region Main Methods
@@ -57,5 +65,10 @@ public class SearchBar
 
             GUILayout.Label(target);
         }
+    }
+
+    private void OnGUI()
+    {
+        ExampleMethod();
     }
 }
